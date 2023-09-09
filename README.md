@@ -1,40 +1,24 @@
-<h1>vue-pure-admin精简版（非国际化版本）</h1>
+# 管理端
 
-[![license](https://img.shields.io/github/license/pure-admin/vue-pure-admin.svg)](LICENSE)
+## 提交规范
 
-**中文** | [English](./README.en-US.md)
+- [vue/.github/COMMIT_CONVENTION.md at dev · vuejs/vue --- 在 dev·vuejs/vue 上的 vue/.giroub/Commit_ConveNTION.md](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md)
 
-## 介绍
+- 参考 [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) 规范 ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
+  - `feat` 增加新功能
+  - `fix` 修复问题/BUG
+  - `style` 代码风格相关无影响运行结果的
+  - `perf` 优化/性能提升
+  - `refactor` 重构
+  - `revert` 撤销修改
+  - `test` 测试相关
+  - `docs` 文档/注释
+  - `chore` 依赖更新/脚手架配置修改等
+  - `workflow` 工作流改进
+  - `ci` 持续集成
+  - `types` 类型定义文件更改
+  - `wip` 开发中
 
-精简版是基于 [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin) 提炼出的架子，包含主体功能，更适合实际项目开发，打包后的大小在全局引入 [element-plus](https://element-plus.org) 的情况下仍然低于 `2.3MB`，并且会永久同步完整版的代码。开启 `brotli` 压缩和 `cdn` 替换本地库模式后，打包大小低于 `350kb`
+## 模板
 
-## 版本选择
-
-当前是非国际化版本，如果您需要国际化版本 [请点击](https://github.com/pure-admin/pure-admin-thin/tree/i18n)
-
-## 配套视频
-
-- [点我查看教程](https://www.bilibili.com/video/BV1kg411v7QT)
-- [点我查看 UI 设计](https://www.bilibili.com/video/BV17g411T7rq)
-
-## 配套保姆级文档
-
-- [查看文档](https://yiming_chang.gitee.io/pure-admin-doc)
-
-## 预览
-
-- [查看预览](https://pure-admin-thin.netlify.app/#/login)
-
-## 维护者
-
-[xiaoxian521](https://github.com/xiaoxian521)
-
-## ⚠️ 注意
-
-- 精简版不接受任何 `issues` 和 `pr`，如果有问题请到完整版 [issues](https://github.com/pure-admin/vue-pure-admin/issues/new/choose) 去提，谢谢！
-
-## 许可证
-
-原则上不收取任何费用及版权，可商用，不过如需二次开源（比如用此平台二次开发并开源，要求前端代码必须开源免费）请联系作者获取许可！（免费，走个记录而已）
-
-[MIT © 2020-present, pure-admin](./LICENSE)
+- [pure-admin/vue-pure-admin: 🔥 ✨✨ ✨ Vue3+Vite4+Element-Plus+TypeScript 编写的一款后台管理系统（兼容移动端） (github.com)](https://github.com/pure-admin/vue-pure-admin)
