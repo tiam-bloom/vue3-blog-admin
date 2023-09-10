@@ -1,6 +1,6 @@
 {
   "name": "vue3-blog-admin",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "NODE_OPTIONS=--max-old-space-size=4096 vite",
@@ -14,13 +14,6 @@
     "svgo": "svgo -f src/assets/svg -o src/assets/svg",
     "cloc": "NODE_OPTIONS=--max-old-space-size=4096 cloc . --exclude-dir=node_modules --exclude-lang=YAML",
     "clean:cache": "rimraf node_modules && rimraf .eslintcache && pnpm install",
-    "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock,build}/**/*.{vue,js,ts,tsx}\" --fix",
-    "lint:prettier": "prettier --write  \"src/**/*.{js,ts,json,tsx,css,scss,vue,html,md}\"",
-    "lint:stylelint": "stylelint \"**/*.{html,vue,css,scss}\" --fix --cache --cache-location node_modules/.cache/stylelint/",
-    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
-    "lint:pretty": "pretty-quick --staged",
-    "lint": "pnpm lint:eslint && pnpm lint:prettier && pnpm lint:stylelint",
-    "prepare": "husky install",
     "preinstall": "npx only-allow pnpm"
   },
   "browserslist": [
@@ -54,8 +47,6 @@
     "vue-types": "^5.1.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.6",
-    "@commitlint/config-conventional": "^17.6.6",
     "@iconify-icons/ep": "^1.2.12",
     "@iconify-icons/ri": "^1.2.9",
     "@iconify/vue": "^4.1.1",
@@ -75,10 +66,8 @@
     "autoprefixer": "^10.4.14",
     "cloc": "^2.11.0",
     "cssnano": "^6.0.1",
-    "eslint": "^8.43.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.15.1",
-    "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "picocolors": "^1.0.0",
     "postcss": "^8.4.24",
@@ -91,7 +80,6 @@
     "rollup-plugin-visualizer": "^5.9.2",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
-    "stylelint": "^15.9.0",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-recess-order": "^4.2.0",
     "stylelint-config-recommended": "^12.0.0",
@@ -129,7 +117,7 @@
       "stable": "*"
     }
   },
-  "repository": "git@github.com:pure-admin/pure-admin-thin.git",
-  "author": "xiaoxian521",
+  "repository": "git@github.com:tiam-bloom/vue3-blog-admin.git",
+  "author": "Tiam",
   "license": "MIT"
 }
