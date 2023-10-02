@@ -13,11 +13,16 @@ import { stringify } from "qs";
 import NProgress from "../progress";
 import { getToken, formatToken } from "@/utils/auth";
 import { useUserStoreHook } from "@/store/modules/user";
+import { message } from "@/utils/message";
+
+const { VITE_APP_BASE_API } = import.meta.env;
 
 // 相关配置请参考：www.axios-js.com/zh-cn/docs/#axios-request-config-1
 const defaultConfig: AxiosRequestConfig = {
   // 请求超时时间
   timeout: 10000,
+  // 后端请求地址
+  baseURL: VITE_APP_BASE_API,
   headers: {
     Accept: "application/json, text/plain, */*",
     "Content-Type": "application/json",
@@ -160,6 +165,10 @@ class PureHttp {
     } as PureHttpRequestConfig;
 
     // 单独处理自定义请求/响应回调
+    return this.requestByConfig<T>(config);
+  }
+
+  public requestByConfig<T>(config: PureHttpRequestConfig): Promise<T> {
     return new Promise((resolve, reject) => {
       PureHttp.axiosInstance
         .request(config)
@@ -167,6 +176,14 @@ class PureHttp {
           resolve(response);
         })
         .catch(error => {
+          // 某些情况网络失效，此时直接进入error流程，所以在这边也进行拦截
+          if (error.response && error.response.status >= 500) {
+            message("网络异常", { type: "error" });
+          }
+
+          if (error.response && error.response.status / 400 === 1) {
+            message("请求接口不存在", { type: "error" });
+          }
           reject(error);
         });
     });

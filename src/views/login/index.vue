@@ -33,24 +33,32 @@ dataThemeChange();
 const { title } = useNav();
 
 const ruleForm = reactive({
-  username: "admin",
-  password: "admin123"
+  username: "yujing_2022@126.com",
+  password: "123456"
 });
 
 const onLogin = async (formEl: FormInstance | undefined) => {
   loading.value = true;
   if (!formEl) return;
+  /**
+   * 校验表单元素
+   * @param valid 是否校验通过
+   * @param fields 校验未通过的字段相关信息，包含字段名field、字段值fieldValue、错误信息message
+   */
   await formEl.validate((valid, fields) => {
     if (valid) {
       useUserStoreHook()
-        .loginByUsername({ username: ruleForm.username, password: "admin123" })
+        .loginByUsername(toRaw(ruleForm))
         .then(res => {
-          if (res.success) {
+          if (res.flag) {
             // 获取后端路由
             initRouter().then(() => {
               router.push(getTopMenu(true).path);
               message("登录成功", { type: "success" });
             });
+          } else {
+            message(res.message, { type: "error" });
+            loading.value = false;
           }
         });
     } else {
@@ -100,6 +108,7 @@ onBeforeUnmount(() => {
             <h2 class="outline-none">{{ title }}</h2>
           </Motion>
 
+          <!-- 表单校验规则API: https://element-plus.gitee.io/zh-CN/component/form.html#formitem-attributes -->
           <el-form
             ref="ruleFormRef"
             :model="ruleForm"

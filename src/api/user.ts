@@ -1,7 +1,14 @@
-import { http } from "@/utils/http";
+import { http } from "@/utils/http"; 
 
+// 登录返回数据结构类型
 export type UserResult = {
-  success: boolean;
+  // 是否成功
+  flag: boolean;
+  // 消息
+  message: string;
+  // 状态码
+  code: number; 
+  // 携带数据
   data: {
     /** 用户名 */
     username: string;
@@ -30,7 +37,16 @@ export type RefreshTokenResult = {
 
 /** 登录 */
 export const getLogin = (data?: object) => {
-  return http.request<UserResult>("post", "/login", { data });
+  // return http.request<UserResult>("post", "/login", undefined, { data } as PureHttpRequestConfig);
+  return http.requestByConfig<UserResult>({
+    method: "post",
+    url: "/login",
+    data,
+    // 自定义请求头
+    headers: {
+      "Content-Type": "multipart/form-data"
+    }
+  });
 };
 
 /** 刷新token */

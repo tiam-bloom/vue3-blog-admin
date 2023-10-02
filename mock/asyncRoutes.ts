@@ -8,7 +8,7 @@ import { MockMethod } from "vite-plugin-mock";
  */
 
 const permissionRouter = {
-  path: "/permission",
+  path: "/api/permission",
   meta: {
     title: "权限管理",
     icon: "lollipop",
@@ -37,7 +37,7 @@ const permissionRouter = {
 
 export default [
   {
-    url: "/getAsyncRoutes",
+    url: "/api/getAsyncRoutes",
     method: "get",
     response: () => {
       return {
