@@ -1,8 +1,11 @@
 import type { Plugin } from "vite";
 import dayjs, { Dayjs } from "dayjs";
-import utils from "@pureadmin/utils";
+import * as utils from "@pureadmin/utils";
 import duration from "dayjs/plugin/duration";
-import { green, blue, bold } from "picocolors";
+import picocolors from "picocolors";
+
+const { bold, green, blue } = picocolors;
+
 dayjs.extend(duration);
 
 export function viteBuildInfo(): Plugin {

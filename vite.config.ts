@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import dayjs from "dayjs";
 import { resolve } from "path";
 import pkg from "./package.json";
@@ -5,6 +6,8 @@ import { warpperEnv } from "./build";
 import { getPluginsList } from "./build/plugins";
 import { include, exclude } from "./build/optimize";
 import { UserConfigExport, ConfigEnv, loadEnv } from "vite";
+import { genScssMultipleScopeVars } from "./src/layout/theme";
+
 
 /** 当前执行node命令时文件夹的地址（工作目录） */
 const root: string = process.cwd();
@@ -30,6 +33,9 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
   const { VITE_CDN, VITE_PORT, VITE_COMPRESSION, VITE_PUBLIC_PATH } =
     warpperEnv(loadEnv(mode, root));
   return {
+    test: {
+      // https://cn.vitest.dev/config/
+    },
     base: VITE_PUBLIC_PATH,
     root,
     resolve: {
@@ -76,6 +82,15 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     define: {
       __INTLIFY_PROD_DEVTOOLS__: false,
       __APP_INFO__: JSON.stringify(__APP_INFO__)
-    }
+    },
+    // https://cn.vitejs.dev/config/shared-options.html#css-preprocessoroptions
+    css: {
+      preprocessorOptions: {
+        scss: {
+          multipleScopeVars: genScssMultipleScopeVars(),
+          extract: true
+        }
+      },
+    },
   };
 };

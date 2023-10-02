@@ -27,13 +27,13 @@ export function getPluginsList(
     // 线上环境删除console
     removeConsole({ external: ["src/assets/iconfont/iconfont.js"] }),
     viteBuildInfo(),
-    // 自定义主题
-    themePreprocessorPlugin({
-      scss: {
-        multipleScopeVars: genScssMultipleScopeVars(),
-        extract: true
-      }
-    }),
+    // 自定义主题, new: themePreprocessorPlugin是Vite的一个插件，它用于处理CSS主题变量。在Vite 2.5.0及以上版本中，这个插件已经被移除了，取而代之的是css.preprocessorOptions选项。
+    // themePreprocessorPlugin({
+    //   scss: {
+    //     multipleScopeVars: genScssMultipleScopeVars(),
+    //     extract: true
+    //   }
+    // }),
     // svg组件化支持
     svgLoader(),
     // ElementPlus({}),

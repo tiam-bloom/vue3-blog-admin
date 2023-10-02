@@ -4,6 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "NODE_OPTIONS=--max-old-space-size=4096 vite",
+    "debug": "vite --debug",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
     "serve": "pnpm dev",
     "build": "rimraf dist && NODE_OPTIONS=--max-old-space-size=8192 vite build",
     "build:staging": "rimraf dist && vite build --mode staging",
@@ -61,6 +65,7 @@
     "@typescript-eslint/parser": "^5.60.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "@vitest/ui": "^0.34.6",
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.3",
     "autoprefixer": "^10.4.14",
@@ -100,6 +105,7 @@
     "vite-plugin-mock": "2.9.6",
     "vite-plugin-remove-console": "^2.1.1",
     "vite-svg-loader": "^4.0.0",
+    "vitest": "^0.34.6",
     "vue-eslint-parser": "^9.3.1",
     "vue-tsc": "^1.8.1"
   },
