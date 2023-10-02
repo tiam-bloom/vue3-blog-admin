@@ -60,7 +60,10 @@ const onLogin = async (formEl: FormInstance | undefined) => {
             message(res.message, { type: "error" });
             loading.value = false;
           }
-        });
+        }).catch(err => {
+          // console.log(err);
+          loading.value = false;
+      })
     } else {
       loading.value = false;
       return fields;
