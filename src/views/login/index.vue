@@ -18,6 +18,8 @@ import darkIcon from "@/assets/svg/dark.svg?component";
 import Lock from "@iconify-icons/ri/lock-fill";
 import User from "@iconify-icons/ri/user-3-fill";
 
+import { hyphen } from "naming-style";
+
 defineOptions({
   name: "Login"
 });
@@ -48,21 +50,20 @@ const onLogin = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       useUserStoreHook()
-        .loginByUsername(toRaw(ruleForm))
-        .then(res => {
-          if (res.flag) {
-            // 获取后端路由
-            initRouter().then(() => {
-              router.push(getTopMenu(true).path);
-              message("登录成功", { type: "success" });
-            });
-          } else {
-            message(res.message, { type: "error" });
+          .loginByUsername(toRaw(ruleForm))
+          .then(res => {
+            if (res.flag) {
+              // 获取后端路由
+              initRouter().then(() => {
+                router.push(getTopMenu(true).path);
+                message("登录成功", {type: "success"});
+              });
+            } else {
+              message(res.message, {type: "error"});
+            }
+          }).catch(err => {
+            message(err, {type: "error"})
             loading.value = false;
-          }
-        }).catch(err => {
-          // console.log(err);
-          loading.value = false;
       })
     } else {
       loading.value = false;
@@ -108,7 +109,7 @@ onBeforeUnmount(() => {
         <div class="login-form">
           <avatar class="avatar" />
           <Motion>
-            <h2 class="outline-none">{{ title }}</h2>
+            <h2 class="outline-none">{{ hyphen(title) }}</h2>
           </Motion>
 
           <!-- 表单校验规则API: https://element-plus.gitee.io/zh-CN/component/form.html#formitem-attributes -->

@@ -119,11 +119,7 @@ function handleDown() {
   const index = resultOptions.value.findIndex(
     item => item.path === activePath.value
   );
-  if (index + 1 === length) {
-    activePath.value = resultOptions.value[0].path;
-  } else {
-    activePath.value = resultOptions.value[index + 1].path;
-  }
+  activePath.value = resultOptions.value[index + 1 === length ? 0 : index + 1].path;
   scrollTo(index + 1);
 }
 
@@ -160,7 +156,7 @@ onKeyStroke("ArrowDown", handleDown);
       size="large"
       v-model="keyword"
       clearable
-      placeholder="搜索菜单"
+      placeholder="搜索菜单（中文模式下支持拼音搜索）"
       @input="handleSearch"
     >
       <template #prefix>
@@ -170,7 +166,7 @@ onKeyStroke("ArrowDown", handleDown);
         />
       </template>
     </el-input>
-    <div class="search-result-container">
+    <div class="search-result-container mt-3">
       <el-scrollbar ref="scrollbarRef" max-height="calc(90vh - 140px)">
         <el-empty
           v-if="resultOptions.length === 0"
@@ -190,9 +186,3 @@ onKeyStroke("ArrowDown", handleDown);
     </template>
   </el-dialog>
 </template>
-
-<style lang="scss" scoped>
-.search-result-container {
-  margin-top: 12px;
-}
-</style>

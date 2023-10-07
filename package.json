@@ -1,5 +1,5 @@
 {
-  "name": "vue3-blog-admin",
+  "name": "tiam-blog-admin",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -39,6 +39,7 @@
     "js-cookie": "^3.0.5",
     "mitt": "^3.0.0",
     "mockjs": "^1.1.0",
+    "naming-style": "^1.0.1",
     "nprogress": "^0.2.0",
     "path": "^0.12.7",
     "pinia": "^2.1.4",
