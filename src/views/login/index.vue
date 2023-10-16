@@ -18,7 +18,9 @@ import darkIcon from "@/assets/svg/dark.svg?component";
 import Lock from "@iconify-icons/ri/lock-fill";
 import User from "@iconify-icons/ri/user-3-fill";
 
-import { hyphen } from "naming-style";
+import naming from "naming-style";
+
+const { hyphen } = naming;
 
 defineOptions({
   name: "Login"

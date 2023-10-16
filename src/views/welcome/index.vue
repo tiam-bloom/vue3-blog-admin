@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useNav } from "@/layout/hooks/useNav";
-import { sentence } from "naming-style";
+import naming from "naming-style";
+const { sentence } = naming;
+
 
 const { title } = useNav();
 
